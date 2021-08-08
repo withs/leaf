@@ -1,6 +1,25 @@
 leaf
 ====
 
+Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later.
+A demo version of leaf is available at leaf.fleur.is
+
+Known issues
+------------
+
+- File integrity change due to multipart text at the end of the file,
+  it can be see when opening text file at the end, for images, pdf, zip, bin, etc the hash change.
+
+
+Todo
+----
+
+[ ] File size limit
+[ ] File retention check with auto delete
+[ ] Upload text
+[ ] Shorten links
+
+
 Prerequisites
 -------------
 
