@@ -1,8 +1,33 @@
 leaf
 ====
 
-How to deploy
+Prerequisites
 -------------
+
+- C++ compiler
+- cmake
+
+Dependencies
+------------
+
+- libcex
+  - libevhtp
+
+
+How to use
+----------
+
+1. clone the repo
+2. install libcex Dependencies (libevhtp)
+    can be installed with package manager
+3. cd leaf
+4. chmod +x configure.sh
+5. run ./configure.sh to run cmake
+6. chmod +x build.sh
+7. run ./build.sh
+8. leaf app is under out/buil/leaf*
 
 Contribution
 ------------
+
+Feel free to open an issue to report a bug or any suggestions.
