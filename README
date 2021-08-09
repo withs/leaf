@@ -1,44 +1,44 @@
 leaf
 ====
 
-Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later. A demo version of leaf is available at leaf.fleur.is
+  Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later. A demo version of leaf is available at leaf.fleur.is
 
 Known issues
 ------------
 
-- File integrity change due to multipart text at the end of the file,
-  it can be see when opening text file at the end, for images, pdf, zip, bin, etc the hash change.
+  - File integrity change due to multipart text at the end of the file,
+    it can be see when opening text file at the end, for images, pdf, zip, bin, etc the hash change.
 
 
 Todo
 ----
 
-[ ] File size limit
-[ ] File retention check with auto delete
-[ ] Upload text
-[ ] Shorten links
-[ ] Docker image
+  [ ] File size limit
+  [ ] File retention check with auto delete
+  [ ] Upload text
+  [ ] Shorten links
+  [ ] Docker image
 
 
 Prerequisites
 -------------
 
-- C++ compiler
-- cmake
-- make
+  - C++ compiler
+  - cmake
+  - make
 
 Dependencies
 ------------
 
-- libcex
-  |
-  +- > zlib
-       libevhtp
-       |
-       +- > Libevent2
-            |
-            +- > libtool
-                 libssl
+  - libcex
+    |
+    +- > zlib
+         libevhtp
+         |
+         +- > Libevent2
+              |
+              +- > libtool
+                   libssl
 
 How to use
 ----------
@@ -110,4 +110,4 @@ Macos
 Contribution
 ------------
 
-Feel free to open an issue to report a bug or any suggestions.
+  Feel free to open an issue to report a bug or any suggestions.
