@@ -1,8 +1,7 @@
 leaf
 ====
 
-Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later.
-A demo version of leaf is available at leaf.fleur.is
+Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later. A demo version of leaf is available at leaf.fleur.is
 
 Known issues
 ------------
@@ -18,6 +17,7 @@ Todo
 [ ] File retention check with auto delete
 [ ] Upload text
 [ ] Shorten links
+[ ] Docker image
 
 
 Prerequisites
@@ -25,26 +25,87 @@ Prerequisites
 
 - C++ compiler
 - cmake
+- make
 
 Dependencies
 ------------
 
 - libcex
-  - libevhtp
-
+  |
+  +- > zlib
+       libevhtp
+       |
+       +- > Libevent2
+            |
+            +- > libtool
+                 libssl
 
 How to use
 ----------
 
-1. clone the repo
-2. install libcex Dependencies (libevhtp)
-    can be installed with package manager
-3. cd leaf
-4. chmod +x configure.sh
-5. run ./configure.sh to run cmake
-6. chmod +x build.sh
-7. run ./build.sh
-8. leaf app is under out/buil/leaf*
+  1. clone the repo
+  2. install Dependencies refer to your OS bellow
+  3. cd leaf
+  4. chmod +x configure.sh
+  5. run ./configure.sh to run cmake
+  6. chmod +x build.sh
+  7. run ./build.sh
+  8. leaf app is under out/buil/leaf*
+
+
+Unbuntu/Debian
+--------------
+
+  # Install zlib
+    apt install zlib1g-dev -y
+
+  # Install libssl
+    apt install libssl-dev -y
+
+  # Install libtool
+    apt install libtool -y
+
+  # Install libevent
+    git clone https://github.com/libevent/libevent && cd libevent
+    ./autogen.sh
+    ./configure --disable-dependency-tracking --disable-debug-mode
+    make
+    make install
+
+  # Install libevhtp
+    git clone https://github.com/Yellow-Camper/libevhtp && cd libevhtp
+    cd build
+    cmake -DEVHTP_BUILD_SHARED=ON -DBUILD_SHARED_LIBS=ON -DEVHTP_DISABLE_REGEX=ON ..
+    make install
+
+  # Install libcex
+    git clone https://github.com/patrickjane/libcex
+    edit CMakeLists.txt "add_library(cex SHARED ${SOURCES})"" to "add_library(cex STATIC ${SOURCES})"
+    mkdir build && cd build
+    cmake .. -DCEX_DISABLE_SSL=1
+    make install
+    edit core.hpp the path of it will be printed with the command above and edit #include <plist.hpp> to #include "plist.hpp" if not you'll get an error from the compiler
+
+Macos
+-----
+
+  # Install zlib
+    brew install zlib
+
+  # Install libevent
+    brew install libevent
+
+  # Install libevhtp
+    brew install libevhtp
+
+  # Install libcex
+    git clone https://github.com/patrickjane/libcex
+    edit CMakeLists.txt "add_library(cex SHARED ${SOURCES})"" to "add_library(cex STATIC ${SOURCES})"
+    mkdir build && cd build
+    cmake .. -DCEX_DISABLE_SSL=1
+    make install
+    edit core.hpp the path of it will be printed with the command above and edit #include <plist.hpp> to #include "plist.hpp" if not you'll get an error from the compiler
+
 
 Contribution
 ------------
