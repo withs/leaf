@@ -15,7 +15,21 @@ jobs:
         echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
     - name: docker build leaf
       run: |
-        docker build . -t withs/leaf:1.0.0
+        docker build .
     - name: docker push
       run: |
-        docker push ghcr.io/withs/leaf:1.0.0
+        # stealed from https://github.com/n3wt0n/SmartHotel360-Website
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/leaf
+        # Change all uppercase to lowercase
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "master" ] && VERSION=latest
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+        docker tag leaf $IMAGE_ID:$VERSION
+        docker tag leaf leaf:${{ github.run_id }}
+        docker push $IMAGE_ID:$VERSION
