@@ -1,0 +1,2 @@
+docker run -p 5000:12002 --name leaf docker.io/fleur/leaf:1.1 
+docker build -t fleur/leaf:1.1 .

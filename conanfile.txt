@@ -1,0 +1,6 @@
+[requires]
+hiredis/1.0.0
+redis-plus-plus/1.2.3
+
+[generators]
+cmake

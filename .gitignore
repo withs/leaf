@@ -44,4 +44,9 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-/out/build/*
+
+/out
+.DS_STORE
+Dockerfile_*
+CMakeLists_*
+src/index.html

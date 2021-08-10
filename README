@@ -1,7 +1,8 @@
 leaf
 ====
 
-  Leaf is a training project made in c++, the purpose of leaf is a simple web server to upload files and download them later. A demo version of leaf is available at leaf.fleur.is
+  Leaf is a training project made in c++, the purpose of leaf is a simple web server to
+  upload files and download them later. A demo version of leaf is available at leaf.fleur.is
 
 Known issues
 ------------
@@ -13,7 +14,7 @@ Known issues
 Todo
 ----
 
-  [ ] File size limit
+  [-] File size limit
   [ ] File retention check with auto delete
   [ ] Upload text
   [ ] Shorten links
@@ -48,6 +49,7 @@ How to use
   3. cd leaf
   4. chmod +x configure.sh
   5. run ./configure.sh to run cmake
+      you must define openssl path in configure.sh with -DOPENSSL_ROOT_DIR=your/path/to/openssl if not found by cmake
   6. chmod +x build.sh
   7. run ./build.sh
   8. leaf app is under out/buil/leaf*
@@ -78,14 +80,6 @@ Unbuntu/Debian
     cmake -DEVHTP_BUILD_SHARED=ON -DBUILD_SHARED_LIBS=ON -DEVHTP_DISABLE_REGEX=ON ..
     make install
 
-  # Install libcex
-    git clone https://github.com/patrickjane/libcex
-    edit CMakeLists.txt "add_library(cex SHARED ${SOURCES})"" to "add_library(cex STATIC ${SOURCES})"
-    mkdir build && cd build
-    cmake .. -DCEX_DISABLE_SSL=1
-    make install
-    edit core.hpp the path of it will be printed with the command above and edit #include <plist.hpp> to #include "plist.hpp" if not you'll get an error from the compiler
-
 Macos
 -----
 
@@ -97,14 +91,6 @@ Macos
 
   # Install libevhtp
     brew install libevhtp
-
-  # Install libcex
-    git clone https://github.com/patrickjane/libcex
-    edit CMakeLists.txt "add_library(cex SHARED ${SOURCES})"" to "add_library(cex STATIC ${SOURCES})"
-    mkdir build && cd build
-    cmake .. -DCEX_DISABLE_SSL=1
-    make install
-    edit core.hpp the path of it will be printed with the command above and edit #include <plist.hpp> to #include "plist.hpp" if not you'll get an error from the compiler
 
 
 Contribution
