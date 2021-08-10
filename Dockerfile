@@ -25,6 +25,7 @@ RUN make install
 WORKDIR /app
 
 copy . .
+RUN git submodule update
 RUN sed -i -e "s#<plist.hpp>#\"plist.hpp\"#g" ext/cex/include/cex/core.hpp
 RUN chmod +x configure.sh
 RUN chmod +x build.sh
