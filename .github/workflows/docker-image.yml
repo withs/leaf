@@ -12,7 +12,7 @@ jobs:
         DOCKER_USER: ${{ secrets.DOCKER_USER }}   
         DOCKER_PASSWORD: ${{ secrets.GHCR_KEY }}  
       run: |
-        docker login ghcr.io -u $DOCKER_USER -p $GHCR_KEY
+        echo $DOCKER_PASSWORD | docker login ghcr.io -u $DOCKER_USER --password-stdin
     - name: docker build leaf
       run: |
         docker build . -t withs/leaf:1.0.0
