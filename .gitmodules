@@ -1,3 +1,0 @@
-[submodule "ext/cex"]
-	path = ext/cex
-	url = https://github.com/patrickjane/libcex
