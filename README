@@ -2,7 +2,8 @@ leaf
 ====
 
   Leaf is a training project made in c++, the purpose of leaf is a simple web server to
-  upload files and download them later. A demo version of leaf is available at leaf.fleur.is
+  upload files and download them later. A demo version of leaf will be available at leaf.fleur.is.
+  This project is only for testing at the moment :)
 
 Known issues
 ------------
@@ -27,6 +28,7 @@ Prerequisites
   - C++ compiler
   - cmake
   - make
+  - docker (optional)
 
 Dependencies
 ------------
@@ -44,15 +46,32 @@ Dependencies
 How to use
 ----------
 
-  1. clone the repo
-  2. install Dependencies refer to your OS bellow
-  3. cd leaf
-  4. chmod +x configure.sh
-  5. run ./configure.sh to run cmake
-      you must define openssl path in configure.sh with -DOPENSSL_ROOT_DIR=your/path/to/openssl if not found by cmake
-  6. chmod +x build.sh
-  7. run ./build.sh
-  8. leaf app is under out/buil/leaf*
+  # Normal
+
+    1. clone the repo
+    2. install git submodules : git submodule update
+    3. install Dependencies refer to your OS bellow
+    4. cd leaf
+    5. chmod +x configure.sh
+    6. run ./configure.sh to run cmake
+        you must define openssl path in configure.sh with -DOPENSSL_ROOT_DIR=your/path/to/openssl if not found by cmake
+    7. chmod +x build.sh
+    8. (optional) Change config in src/config.h (if you change files location make sure to create the folder)
+    9. run ./build.sh
+    10. leaf app is under out/buil/leaf*
+    11. access with your browser localhost:12002
+        or upload a file with curl curl -F'data=@file.ext' localhost:12002
+
+  # Docker (easier)
+
+    1. clone the repo
+    2. (optional) Change config in src/config.h (if you change files location make sure to create the folder,
+        if you change the port don't forget to change the port in the docker file and the command bellow)
+    3. build the image with -> docker build -t fleur/leaf:1.0 .
+    4. start the container with -> docker run -p 12002:12002 --name leaf docker.io/fleur/leaf:1.0
+        don't forget to change the port if you need
+    5. access with your browser localhost:12002
+        or upload a file with curl curl -F'data=@file.ext' localhost:12002
 
 
 Unbuntu/Debian

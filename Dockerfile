@@ -35,7 +35,6 @@ RUN ./build.sh
 
 EXPOSE 12002
 
-
 ENV LD_LIBRARY_PATH=/usr/local/lib
 
 CMD [ "./out/build/leaf" ]
