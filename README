@@ -15,10 +15,10 @@ Todo
 ----
 
   [-] File size limit
-  [ ] File retention check with auto delete
+  [-] File retention check with auto delete
   [ ] Upload text
   [ ] Shorten links
-  [ ] Docker image
+  [-] Docker support
 
 
 Prerequisites
