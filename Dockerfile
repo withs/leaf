@@ -25,8 +25,13 @@ RUN make install
 WORKDIR /app
 
 copy . .
-RUN git submodule update
-RUN sed -i -e "s#<plist.hpp>#\"plist.hpp\"#g" ext/cex/include/cex/core.hpp
+#RUN git submodule update
+WORKDIR /app/ext
+RUN git clone https://github.com/patrickjane/libcex
+RUN mv libcex cex
+WORKDIR /app/ext/cex/include/cex
+RUN sed -i -e "s#<plist.hpp>#\"plist.hpp\"#g" core.hpp
+WORKDIR /app
 RUN chmod +x configure.sh
 RUN chmod +x build.sh
 RUN mkdir out
