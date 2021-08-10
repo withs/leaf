@@ -49,8 +49,8 @@ How to use
   # Normal
 
     1. clone the repo
-    2. install git submodules : git submodule update
-    3. install Dependencies refer to your OS bellow
+    2. cd ext/ && git clone https://github.com/patrickjane/libcex && mv libcex cex
+    3. install other dependencies refer to your OS bellow
     4. cd leaf
     5. chmod +x configure.sh
     6. run ./configure.sh to run cmake
